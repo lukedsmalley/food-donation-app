@@ -22,7 +22,7 @@ export class App extends React.Component {
             <Home/>
           </Route>
           <Route path="/login">
-            <Login/>
+            <Login redirect={this.state.session} onLogin={session => this.setState({ session })}/>
           </Route>
           <Route path="/restaurant">
             <Restaurant session={this.props.session}/>

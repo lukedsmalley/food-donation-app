@@ -15,6 +15,11 @@ export class Home extends React.Component {
   }
 
   render() {
-    return <p>Home</p>
+    switch (this.state.status) {
+      case FINISHED:
+        return <p>{JSON.stringify(this.state.data)}</p>
+      default:
+        return <p>Doink</p>
+    }
   }
 }
