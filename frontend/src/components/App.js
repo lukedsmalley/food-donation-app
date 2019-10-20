@@ -16,8 +16,8 @@ export class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
+        <Navigation session={this.props.session} onLogout={() => this.setState({ session: null })}/>
         <Switch>
-          <Navigation session={this.props.session} onLogout={() => this.setState({ session: null })}/>
           <Route exact path="/">
             <Home/>
           </Route>
