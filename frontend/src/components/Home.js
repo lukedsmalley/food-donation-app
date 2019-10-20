@@ -2,8 +2,8 @@ import React from 'react'
 import { PENDING, FINISHED, FAILED } from '../util'
 
 export class Home extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = { status: PENDING }
   }
 
@@ -15,6 +15,6 @@ export class Home extends React.Component {
   }
 
   render() {
-    if (this.props.user)
+    return <p>Home</p>
   }
 }

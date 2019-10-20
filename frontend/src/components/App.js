@@ -1,7 +1,11 @@
+import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { Home } from './home'
+import { Home } from './Home'
+import { Restaurant } from './Restaurant'
+import { Login } from './Login'
+import { Navigation } from './Navigation'
 
-export class App {
+export class App extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -15,10 +19,10 @@ export class App {
         <Switch>
           <Navigation session={this.props.session} onLogout={() => this.setState({ session: null })}/>
           <Route exact path="/">
-            <Home session={this.props.session}/>
+            <Home/>
           </Route>
           <Route path="/login">
-            <Login session={this.props.session}/>
+            <Login/>
           </Route>
           <Route path="/restaurant">
             <Restaurant session={this.props.session}/>
