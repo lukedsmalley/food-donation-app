@@ -1,28 +1,30 @@
-import React from 'react';
-import './App.css';
-import { PENDING, FINISHED, FAILED } from '../util'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Home } from './home'
 
-export class App extends React.Component {
+export class App {
   constructor() {
     super()
-    this.state = { status: PENDING }
-  }
-
-  componentDidMount() {
-    fetch('/api/locations')
-      .then(response => response.json())
-      .then(data => this.setState({ status: FINISHED, data }))
-      .catch(err => this.setState({ status: FAILED, err }))
+    this.state = {
+      session: null
+    }
   }
 
   render() {
-    switch (this.state.status) {
-      case PENDING:
-        return <p class="app">Loading...</p>
-      case FINISHED:
-        return <p class="app">{JSON.stringify(this.state.data)}</p>
-      case FAILED:
-        return <p class="app">{this.state.err.toString()}</p>
-    }
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Navigation session={this.props.session} onLogout={() => this.setState({ session: null })}/>
+          <Route exact path="/">
+            <Home session={this.props.session}/>
+          </Route>
+          <Route path="/login">
+            <Login session={this.props.session}/>
+          </Route>
+          <Route path="/restaurant">
+            <Restaurant session={this.props.session}/>
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    )
   }
 }
