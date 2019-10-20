@@ -8,7 +8,6 @@ export class Login extends React.Component {
   }
 
   login() {
-    alert(document.querySelector('#email').value)
     fetch('/api/login', {
       method: 'POST',
       headers: {
@@ -46,7 +45,7 @@ export class Login extends React.Component {
             <input type="email" id="email" className="form-control" placeholder="Email address" required autoFocus/>
             <label htmlFor="password" className="sr-only">Password</label>
             <input type="password" id="password" className="form-control" placeholder="Password" required/>
-            <button className="btn btn-lg btn-primary btn-block" onClick={this.login}>Sign in</button>
+            <button className="btn btn-lg btn-primary btn-block" onClick={this.login.bind(this)}>Sign in</button>
           
         </div>
       </div>

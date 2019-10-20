@@ -24,9 +24,14 @@ export class Restaurant extends React.Component {
   }
 
   onHasFoodChanged() {
+    const hasFood = !this.state.hasFood
+    this.setState({ status: this.state.status, hasFood })
     fetch('/api/has-food/' + this.props.session, {
       method: 'POST',
-      body: JSON.stringify(!!this.checked)
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ hasFood })
     })
   }
 
@@ -45,7 +50,7 @@ export class Restaurant extends React.Component {
           <div className="container">
             <div className="text-center">
               <div className="form-check">
-                <input type="checkbox" className="form-check-input" id="has-food" checked={JSON.stringify(this.state.hasFood)} onChange={this.onHasFoodChanged}/>
+                <input type="checkbox" className="form-check-input" id="has-food" checked={this.state.hasFood} onChange={this.onHasFoodChanged.bind(this)}/>
                 <label className="form-check-label" htmlFor="has-food">We have food</label>
               </div>
             </div>

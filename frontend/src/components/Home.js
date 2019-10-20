@@ -14,12 +14,22 @@ export class Home extends React.Component {
       .catch(err => this.setState({ status: FAILED, err }))
   }
 
+  componentDidCatch(err) {
+    alert(err)
+  }
+
   render() {
     switch (this.state.status) {
       case FINISHED:
-        return <p>{JSON.stringify(this.state.data)}</p>
+        return <div class="text-center">
+          {Object.keys(this.state.data).filter(key => this.state.data[key]).map((key, index) => (
+            <iframe key={index} width="800px" height="450px" frameBorder="0" style={{ border: 0 }}
+              src={`https://www.google.com/maps/embed/v1/place?q=place_id:${key}&key=AIzaSyD4Q_tgGJ9vyVNr6D51NEPj_LgG-nYZk14`}
+              allowFullScreen></iframe> 
+          ))}
+        </div>
       default:
-        return <p>Doink</p>
+        return <p>Loading...</p>
     }
   }
 }

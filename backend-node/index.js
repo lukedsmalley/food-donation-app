@@ -20,11 +20,14 @@ app.get('/api/locations', (request, response) => {
 })
 
 app.get('/api/has-food/:location', (request, response) => {
+  console.log('Get has-food')
   response.send(locations[request.params.location])
 })
 
 app.post('/api/has-food/:location', (request, response) => {
-  locations[request.params.location] = request.body
+  console.log('Post has-food')
+  console.log(request.body.hasFood)
+  locations[request.params.location] = request.body.hasFood
 })
 
 app.post('/api/login', (request, response) => {
