@@ -24,7 +24,7 @@ export class Home extends React.Component {
         return <div class="text-center">
           {Object.keys(this.state.data).filter(key => this.state.data[key]).map((key, index) => (
             <iframe key={index} width="800px" height="450px" frameBorder="0" style={{ border: 0 }}
-              src={`https://www.google.com/maps/embed/v1/place?q=place_id:${key}&key=AIzaSyD4Q_tgGJ9vyVNr6D51NEPj_LgG-nYZk14`}
+              src={`https://www.google.com/maps/embed/v1/place?q=place_id:${key}&key=GOOGLE_API_KEY_MUST_GO_HERE`}
               allowFullScreen></iframe> 
           ))}
         </div>
